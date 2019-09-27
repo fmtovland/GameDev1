@@ -18,7 +18,8 @@ public class TurretScript : MonoBehaviour
     {
         if(Input.GetButton("Fire1") && !pressed)
         {
-            Instantiate(bullet, transform.position, transform.rotation);
+            GameObject b = Instantiate(bullet, transform.position, transform.rotation);
+            b.transform.parent = this.transform;
             pressed=true;
         }
 	else if(!Input.GetButton("Fire1")) pressed=false;

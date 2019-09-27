@@ -13,7 +13,8 @@ public class WallScript : MonoBehaviour
     {
 	for(int i=0; i<width; i++){
             for(float j=.5f; j<height; j++){
-                Instantiate(brick, new Vector3(i,j,3), new Quaternion());
+                GameObject b = Instantiate(brick, new Vector3(i,j,3), new Quaternion());
+                b.transform.parent = this.transform;
             }
         }
     }
