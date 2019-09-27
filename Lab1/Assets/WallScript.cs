@@ -5,13 +5,15 @@ using UnityEngine;
 public class WallScript : MonoBehaviour
 {
     public GameObject brick;
+    public int width=10;
+    public int height=10;
 
     // Start is called before the first frame update
     void Start()
     {
-	for(int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                Instantiate(brick, new Vector3(i,j+.5f,3), new Quaternion());
+	for(int i=0; i<width; i++){
+            for(float j=.5f; j<height; j++){
+                Instantiate(brick, new Vector3(i,j,3), new Quaternion());
             }
         }
     }
