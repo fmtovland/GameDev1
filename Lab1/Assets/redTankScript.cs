@@ -45,27 +45,27 @@ public class redTankScript : MonoBehaviour
         Vector3 point = transform.InverseTransformPoint(player.transform.position);
         double angle = Atan(point.z/point.x)*(180/PI);
         if(point.x < 0) angle += 180;
-        if(angle < 0) angle += 360;
+        angle -= 90;
 
         if(point.z > 0)
         {
-            debug += "The player is in front. ";
+            debug += "The player is in front\n";
         }
         else
         {
-            debug += "The player is in behind. ";
+            debug += "The player is in behind\n";
         }
 
-        debug += "Angle to player: "+angle+" ";
+        debug += "Angle to player: "+angle+"\n";
 
-        if( 145 > angle && angle > 45 && point.z > 0)
+        if( -45 < angle && angle < 45 && point.z > 0)
         {
-            debug += "player is within FOV";
+            debug += "player is within FOV\n";
         }
 
         else
         {
-            debug += "player is not within FOV";
+            debug += "player is not within FOV\n";
         }
         console.text = debug;
     }
