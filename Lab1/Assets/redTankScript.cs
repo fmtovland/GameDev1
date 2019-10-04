@@ -43,9 +43,7 @@ public class redTankScript : MonoBehaviour
         agent.destination = targets[currentTarget].transform.position;
         string debug = "";
         Vector3 point = transform.InverseTransformPoint(player.transform.position);
-        double angle = Atan(point.z/point.x)*(180/PI);
-        if(point.x < 0) angle += 180;
-        angle -= 90;
+        double angle = Atan2(point.x,point.z)*(180/PI);
 
         if(point.z > 0)
         {
