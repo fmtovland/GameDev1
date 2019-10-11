@@ -5,8 +5,7 @@ using UnityEngine;
 public class TurretScript : MonoBehaviour
 {
     public GameObject bullet;
-    public float bulletsPerSecond;
-    float lastShot=0;
+    public float bulletsPerSecond=5;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +13,26 @@ public class TurretScript : MonoBehaviour
         
     }
 
+    void OnEnable() {
+        StartCoroutine(shooting());
+    }
+
+    //Start in OnEnable, no need to disable
+    System.Collections.IEnumerator shooting() {
+        while (true) {
+            if(Input.GetButton("Fire1")) {
+                Instantiate(bullet, transform.position, transform.rotation);
+                yield return new WaitForSeconds(1/bulletsPerSecond);
+            }
+
+            else {
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        lastShot += Time.deltaTime;
-
-        if(Input.GetButton("Fire1") && (lastShot > (1/bulletsPerSecond)))
-        {
-            GameObject b = Instantiate(bullet, transform.position, transform.rotation);
-            lastShot = 0;
-        }
     }
 }
