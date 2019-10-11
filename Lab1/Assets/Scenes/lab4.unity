@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCount: 5
+  diameter: 20
   enemys: []
   enemyType: {fileID: 426439588804607109, guid: 57468b64c39d2a6d9996b390a4c59338,
     type: 3}
