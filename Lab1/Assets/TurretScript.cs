@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    bool pressed = false;
     public GameObject bullet;
+    public float bulletsPerSecond;
+    float lastShot=0;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +17,12 @@ public class TurretScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && !pressed)
+        lastShot += Time.deltaTime;
+
+        if(Input.GetButton("Fire1") && (lastShot > (1/bulletsPerSecond)))
         {
             GameObject b = Instantiate(bullet, transform.position, transform.rotation);
-            pressed=true;
+            lastShot = 0;
         }
-	else if(!Input.GetButton("Fire1")) pressed=false;
     }
 }
