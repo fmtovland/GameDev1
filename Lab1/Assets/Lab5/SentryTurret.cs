@@ -10,7 +10,7 @@ public class SentryTurret : MonoBehaviour
 
     public String[] beMeanTo;
     public float turnSpeed=100;
-    public int bulletsPerSecond=1;
+    public float bulletsPerSecond=1;
 
     Coroutine tracker,shooter;
     Collider tracking;
